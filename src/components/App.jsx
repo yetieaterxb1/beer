@@ -25,7 +25,6 @@ class App extends React.Component {
     ]).then(([res1,res2,res3,res4]) => Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])).then(([data1,data2,data3,data4]) => this.setState({
       beers: data1, breweries: data2, categories: data3, styles: data4
     }));
-
   }
 
 	handleInputChange(e) {
@@ -58,13 +57,26 @@ class App extends React.Component {
     console.log(userBeers)
 		return (
       <>
-			<h3>Beer</h3>
+      <section>
+      <h1 class="chrome">BEER</h1>
+      <h3 class="dreams">Flight</h3>
+			<br></br>
+      <br></br>
+      <br></br>
       <div>
-        <Modal breweries={breweries} categories={categories} styles={styles}/>
+        <Modal class='modal' breweries={breweries} categories={categories} styles={styles}/>
       </div>
-      <div>
+      <div class="tbl-header">
+      <table class = "container" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <th>Beer Name</th>
+          <th>ABV</th>
+          <th>Rating</th>
+        </tr>
         {beers.map(beer => <Beer data={beer} />)}
+      </table>
       </div>
+      </section>
       </>
 		);
 	}

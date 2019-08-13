@@ -1,13 +1,15 @@
 import React from 'react';
 
+
+
 var Beer = (props) => {
     return (
     <>
-      <div>
-        <div class='one'>{props.data.name}</div>
-        <div class='two'>{props.data.abv}</div>
-        <div class='three'>{props.data.rating}</div>
-      </div>
+      <tr id='wrapper'>
+        <td>{props.data.name}</td>
+        <td>{props.data.abv}</td>
+        <td>{props.data.rating}</td>
+      </tr>
     </>
     )
   }
