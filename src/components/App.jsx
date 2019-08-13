@@ -48,7 +48,7 @@ class App extends React.Component {
 	}
 
 	render() {
-    const beers = this.state.beers
+    const beers = this.state.beers.slice(0,100)
     const breweries = this.state.breweries
     const categories = this.state.categories
     const styles = this.state.styles
@@ -58,8 +58,12 @@ class App extends React.Component {
 		return (
       <>
       <section>
-      <h1 class="chrome">BEER</h1>
-      <h3 class="dreams">Flight</h3>
+      <div class="text-effect">
+
+  <h1 class="neon" data-text="BEER FLIGHT" contenteditable>BEER FLIGHT</h1>
+  <div class="gradient"></div>
+  <div class="spotlight"></div>
+</div>
 			<br></br>
       <br></br>
       <br></br>

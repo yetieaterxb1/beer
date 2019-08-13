@@ -95,20 +95,21 @@ const addNewBeer = (data) => {
 // //   var params = [data.]
 // // }
 //
-// const updateItem = (data) => {
-//   var query = 'update list set completed = ? where item = ?;'
-//   var params = [!data.completed, data.item];
-//   return new Promise((resolve, reject) => {
-//     db.query(query, params, (err, updatedItem) => {
-//       if (err) {
-//         reject(err)
-//       } else {
-//         resolve(updatedItem)
-//       }
-//     })
-//   })
-// }
+const updateItem = (data) => {
+
+  var query = 'update beers set rating = ? where id = ?;'
+  var params = [data.rating, data.id];
+  return new Promise((resolve, reject) => {
+    db.query(query, params, (err, updatedItem) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(updatedItem)
+      }
+    })
+  })
+}
 
 module.exports = {
-  getAllBeers, getAllBreweries, getAllCategories, getAllStyles, addNewBeer
+  getAllBeers, getAllBreweries, getAllCategories, getAllStyles, addNewBeer, updateItem
 }

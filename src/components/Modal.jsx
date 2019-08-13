@@ -25,7 +25,7 @@ class Modal extends React.Component {
   render () {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Add New Beer</button>
+        <button class="btn draw-border" onClick={this.handleOpenModal}>Add New Beer</button>
         <ReactModal
            isOpen={this.state.showModal}
         >

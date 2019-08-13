@@ -22,9 +22,11 @@ app.get('/api/styles', (req, res) => {
   db.getAllStyles().then(data=>res.send(data)).catch(err => console.log(err))
 })
 app.post('/api/addBeer', (req, res) => {
-  console.log(req.body)
-  console.log(req.params)
   db.addNewBeer(req.body)
+  //db.query()
+})
+app.put('/api/updateBeer', (req, res) => {
+  db.updateItem(req.body)
   //db.query()
 })
 
