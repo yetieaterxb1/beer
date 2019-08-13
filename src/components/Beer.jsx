@@ -25,7 +25,6 @@ handleChanges(event) {
   })]).then(()=> this.updateBeer());
 }
   render(){
-
     return (
     <>
       <tr id='wrapper'>
