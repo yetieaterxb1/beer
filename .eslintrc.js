@@ -5,7 +5,7 @@ module.exports = {
       "es6": true,
       "node": true
   },
-  "extends": "airbnb/hooks",
+  "extends": "airbnb",
   "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly"
@@ -14,7 +14,8 @@ module.exports = {
       "ecmaFeatures": {
           "jsx": true
       },
-      "ecmaVersion": 2018
+      "ecmaVersion": 2018,
+      "sourceType": "module"
   },
   "plugins": [
       "react"
