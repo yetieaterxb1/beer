@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 db.connect();
 
 // get all items
-const getAllItems = () => {
+const getAllBeers = () => {
   const query = 'select * from BEERLIST.beers;'
   return new Promise((resolve, reject) => {
     db.query(query, (err, items) => {
@@ -23,20 +23,58 @@ const getAllItems = () => {
     })
   })
 }
+const getAllBreweries = () => {
+  const query = 'select * from BEERLIST.breweries;'
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, items) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(items)
+      }
+    })
+  })
+}
+const getAllCategories = () => {
+  const query = 'select * from BEERLIST.categories;'
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, items) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(items)
+      }
+    })
+  })
+}
+const getAllStyles = () => {
+  const query = 'select * from BEERLIST.styles;'
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, items) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(items)
+      }
+    })
+	})
 
-// const addItem = (data) => {
-//   var query = 'insert into list (category, item) values (?, ?);'
-//   var params = [data.category, data.item];
-//   return new Promise((resolve, reject) => {
-//     db.query(query, params, (err, item) => {
-//       if (err) {
-//         reject(err)
-//       } else {
-//         resolve(item)
-//       }
-//     });
-//   });
-// }
+}
+
+const addNewBeer = (data) => {
+	console.log(data)
+  var query = 'insert into beers (brewery_id, name, cat_id, style_id, abv, rating) values (?, ?, ?, ?, ?, ?);'
+  var params = [data.brewery_id, data.name, data.cat_id, data.style_id, data.abv, data.rating];
+  return new Promise((resolve, reject) => {
+    db.query(query, params, (err, item) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(item)
+      }
+    });
+  });
+}
 // ​
 // const deleteItem = (data) => {
 //   var query = 'delete from list where item = ?;'
@@ -72,8 +110,5 @@ const getAllItems = () => {
 // }
 
 module.exports = {
-  getAllItems,
-  // addItem,
-  // deleteItem,
-  // updateItem
+  getAllBeers, getAllBreweries, getAllCategories, getAllStyles, addNewBeer
 }

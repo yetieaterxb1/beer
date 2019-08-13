@@ -1,0 +1,11 @@
+#wrapper {
+  display: flex;
+}
+
+.one {
+  flex: 0 0 65%;
+}
+
+.two {
+  flex: 1;
+}

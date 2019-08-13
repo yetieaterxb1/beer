@@ -1,25 +1,31 @@
 /* eslint-disable no-tabs */
 import React from 'react';
 import Modal from './Modal.jsx'
+import Beer from './Beer.jsx'
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
-			brewery: '',
-			rating: '',
       beers: [],
-      breweries: []
+      breweries: [],
+      categories:[],
+      styles:[]
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    fetch('/api/beers').then(res=>res.json()).then(data=> this.setState({
-      beers: data
-    })).catch(err => console.log(err))
+    Promise.all([
+      fetch('/api/beers'),
+      fetch('/api/breweries'),
+      fetch('/api/categories'),
+      fetch('/api/styles')
+    ]).then(([res1,res2,res3,res4]) => Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])).then(([data1,data2,data3,data4]) => this.setState({
+      beers: data1, breweries: data2, categories: data3, styles: data4
+    }));
+
   }
 
 	handleInputChange(e) {
@@ -44,14 +50,22 @@ class App extends React.Component {
 
 	render() {
     const beers = this.state.beers
-    console.log(beers)
+    const breweries = this.state.breweries
+    const categories = this.state.categories
+    const styles = this.state.styles
+
+    const userBeers = beers.filter(beer => beer.rating !== 0)
+    console.log(userBeers)
 		return (
-			<div>Beer
-      <Modal />
+      <>
+			<h3>Beer</h3>
       <div>
-        {beers.map(beer => <div>{beer.name}</div>)}
+        <Modal breweries={breweries} categories={categories} styles={styles}/>
       </div>
+      <div>
+        {beers.map(beer => <Beer data={beer} />)}
       </div>
+      </>
 		);
 	}
 }

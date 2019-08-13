@@ -1,6 +1,7 @@
 //import FormComponent from 'FormComponent';
 import React from 'react';
 import ReactModal from 'react-modal';
+import Form from './Form.jsx'
 
 class Modal extends React.Component {
   constructor () {
@@ -24,11 +25,12 @@ class Modal extends React.Component {
   render () {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Trigger Modal</button>
+        <button onClick={this.handleOpenModal}>Add New Beer</button>
         <ReactModal
            isOpen={this.state.showModal}
         >
-          <button onClick={this.handleCloseModal}>Close Modal</button>
+          <Form breweries={this.props.breweries} categories={this.props.categories} styles={this.props.styles} handleCloseModal={this.handleCloseModal}/>
+
         </ReactModal>
       </div>
     );
