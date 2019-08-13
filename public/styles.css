@@ -389,7 +389,15 @@ textarea:hover {
 #submit:hover {
   color: #e2dedb;
 } */
-
+.breweryselect {
+  float: right;
+}
+.modalselect {
+  float: left;
+}
+.modalbrewery {
+  background: black;
+}
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
